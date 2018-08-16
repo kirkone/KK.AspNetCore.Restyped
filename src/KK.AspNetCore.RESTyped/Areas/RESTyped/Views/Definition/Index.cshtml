@@ -1,0 +1,16 @@
+@using Microsoft.AspNetCore.Mvc.ApiExplorer;
+@model IApiDescriptionGroupCollectionProvider
+export interface DummyAPI {
+@foreach (var group in Model.ApiDescriptionGroups.Items)
+{
+    @foreach (var api in group.Items)
+    {
+<text>    '@api.RelativePath.Replace("api",string.Empty)': {
+        @api.HttpMethod: {
+            response: String
+        }
+    }
+</text>
+    }
+}
+}
